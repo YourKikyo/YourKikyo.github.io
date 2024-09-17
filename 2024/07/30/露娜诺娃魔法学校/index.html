@@ -175,7 +175,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/VPN/" style="color: #00bcd4">
+                <a href="/tags/VPN/" style="color: ">
                     VPN
                 </a>
             </span>
@@ -245,7 +245,18 @@
     
 </body>
 </html>
-<script src="/js/<fireworks.min.js>"></script>
-<script src="/js/<background.min.js>"></script>
-<script src="/js/<cursor.min.js>"></script>
-<link rel="stylesheet" href="/css/<cursor.min.css>" />
+
+
+<canvas
+        id="fireworks"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://s4.zstatic.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+
+<canvas
+        id="background"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="/js/background.min.js"></script>
+
