@@ -53,6 +53,7 @@
 
 <link rel="stylesheet" href="/css/main.css" />
 
+
 <meta name="generator" content="Hexo 7.3.0"></head>
 <body>
     <div id="layout">
@@ -239,6 +240,14 @@
 
 
     
+
+    #sakana-widget(style='position:fixed;bottom:10px;right:10px;')
+    script.
+    function initSakanaWidget() {
+    new SakanaWidget().mount('#sakana-widget');
+    }
+    script(async onload='initSakanaWidget()' src='https://cdn.jsdelivr.net/npm/sakana-widget@latest/dist/sakana.min.js')
+
 </body>
 </html>
 
