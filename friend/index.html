@@ -10,7 +10,7 @@
   
 
   
-  <script>window.icon_font = '4552607_tq6stt6tcg';window.clipboard_tips = {"success":"复制成功(*^▽^*)","fail":"复制失败 (ﾟ⊿ﾟ)ﾂ","copyright":{"enable":true,"count":50,"content":"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！"}};</script>
+  <script>window.icon_font = '4552607_tq6stt6tcg';window.clipboard_tips = {"success":"复制成功(*^▽^*)","fail":"复制失败 (ﾟ⊿ﾟ)ﾂ","copyright":{"enable":true,"count":50,"content":"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！"}};window.outdate = {"enable":true,"daysAgo":90,"message":"本文最后更新于 {time}，请注意文中内容可能已经发生变化。"};</script>
   
   
   <title>
@@ -198,6 +198,8 @@
 
     <div class="e-content article-entry" itemprop="articleBody">
       
+        <blockquote id="outdate-blockquote" style="display: none;"><p></p></blockquote>
+      
       
         <h2 id="一些友情链接"><a class="markdownIt-Anchor" href="#一些友情链接"></a> 一些友情链接</h2>
 <ul>
@@ -209,6 +211,11 @@
     </div>
     <footer class="article-footer">
       
+      
+        <a data-aos="zoom-in" href="/friend/index.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/friend/" itemprop="commentCount"></span>
+          留言
+        </a>
       
       
       
@@ -223,6 +230,8 @@
 
   
 </article>
+
+  <section id="comments" class="vcomment"></section>
 
 
 
@@ -465,6 +474,34 @@
 </script>
 
 
+  
+<script src="https://npm.webcache.cn/valine@1.5.1/dist/Valine.min.js" data-pjax></script>
+
+  <script data-pjax>
+    var GUEST_INFO = ['nick', 'mail', 'link'];
+    var guest_info = 'nick,mail,link'.split(',').filter((item) => {
+      return GUEST_INFO.indexOf(item) > -1
+    });
+    var recordIP = JSON.parse('true');
+    var highlight = JSON.parse('true');
+    var visitor = JSON.parse('false');
+
+    new Valine({
+      el: '.vcomment',
+      appId: "xtlksO9k39ELQS6Y3hKGrYPk-gzGzoHsz",
+      appKey: "jNmQP3L414P63Qq2uejRz6dP",
+      placeholder: "Just go go",
+      pageSize: '10',
+      avatar: 'mp',
+      lang: 'zh-cn',
+      recordIP: recordIP,
+      highlight: highlight,
+      visitor: visitor,
+      requiredFields: guest_info,
+      path: window.location.pathname
+    });
+  </script>
+
 
 
 
@@ -524,6 +561,25 @@
   </script>
   
 
+<script data-pjax>
+  var updateTime = _$('#post-update-time')?.innerHTML;
+
+  if (updateTime) {
+    const update = new Date(updateTime);
+    const now = new Date();
+    const diff = now - update;
+    const days = diff / 86400000;
+    const { daysAgo, message: template } = window.outdate;
+    if (days >= daysAgo) {
+      const message = template.replace(/{time}/, updateTime);
+      const blockquote = _$('#outdate-blockquote');
+      if (blockquote) {
+        blockquote.querySelector('p').innerText = message;
+        blockquote.style.display = 'block';
+      }
+    }
+  }
+</script>
 
 
   
