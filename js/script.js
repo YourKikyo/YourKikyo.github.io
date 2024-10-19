@@ -1,12 +1,4 @@
 (function () {
-
-  import Valine from 'valine';
-
-  new Valine({
-    el:'#vcomments',
-    // other config
-  })
-
   // A Simple EventListener
   [Element, Document, Window].forEach((target) => {
     target.prototype._addEventListener = target.prototype.addEventListener;
