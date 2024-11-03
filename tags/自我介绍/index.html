@@ -65,6 +65,10 @@
 <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.0.1/dist/aos.css">
 
   
+  <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/sakana-widget@2.7.0/lib/sakana.min.css"
+  />
 <meta name="generator" content="Hexo 7.3.0"></head>
 
   <body>
@@ -183,19 +187,19 @@
   <div class="tag-wrap">
     
       <div class="archives-tag-list-item" data-aos="zoom-in">
-        <a class="archives-tag-list-link" href="/tags/测试/">测试</a>
-      </div>
-    
-      <div class="archives-tag-list-item" data-aos="zoom-in">
         <a class="archives-tag-list-link" href="/tags/Galgames/">Galgames</a>
       </div>
     
       <div class="archives-tag-list-item" data-aos="zoom-in">
-        <a class="archives-tag-list-link" href="/tags/科学上网/">科学上网</a>
+        <a class="archives-tag-list-link" href="/tags/测试/">测试</a>
       </div>
     
       <div class="archives-tag-list-item" data-aos="zoom-in">
         <a class="archives-tag-list-link" href="/tags/自我介绍/">自我介绍</a>
+      </div>
+    
+      <div class="archives-tag-list-item" data-aos="zoom-in">
+        <a class="archives-tag-list-link" href="/tags/科学上网/">科学上网</a>
       </div>
     
       <div class="archives-tag-list-item" data-aos="zoom-in">
@@ -343,6 +347,21 @@
       </div>
     
   </div>
+  <div id="sakana-widget-left-bottom"></div>
+  <div id="sakana-widget-right-bottom"></div>
+  <script>
+    function initSakanaWidget() {
+      const sakanaWidgetLeft = new SakanaWidget({ size: 300 , character: 'takina' }).mount('#sakana-widget-left-bottom');
+      sakanaWidgetLeft.triggerAutoMode();
+      const sakanaWidgetRight = new SakanaWidget({ size: 300 , character: 'chisato' }).mount('#sakana-widget-right-bottom');
+      sakanaWidgetRight.triggerAutoMode();
+    }
+  </script>
+  <script
+          async
+          onload="initSakanaWidget()"
+          src="https://cdn.jsdelivr.net/npm/sakana-widget@2.7.0/lib/sakana.min.js"
+  ></script>
 </footer>
 
         <div class="sidebar-top">

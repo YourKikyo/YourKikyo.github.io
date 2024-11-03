@@ -2811,3 +2811,13 @@ pre .javascript .function {
   height: 2px;
   background: var(--red-1);
 }
+#sakana-widget-left-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+#sakana-widget-right-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}

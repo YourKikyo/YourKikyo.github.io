@@ -69,6 +69,10 @@
 <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.0.1/dist/aos.css">
 
   
+  <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/sakana-widget@2.7.0/lib/sakana.min.css"
+  />
 <meta name="generator" content="Hexo 7.3.0"></head>
 
   <body>
@@ -346,6 +350,21 @@
       </div>
     
   </div>
+  <div id="sakana-widget-left-bottom"></div>
+  <div id="sakana-widget-right-bottom"></div>
+  <script>
+    function initSakanaWidget() {
+      const sakanaWidgetLeft = new SakanaWidget({ size: 300 , character: 'takina' }).mount('#sakana-widget-left-bottom');
+      sakanaWidgetLeft.triggerAutoMode();
+      const sakanaWidgetRight = new SakanaWidget({ size: 300 , character: 'chisato' }).mount('#sakana-widget-right-bottom');
+      sakanaWidgetRight.triggerAutoMode();
+    }
+  </script>
+  <script
+          async
+          onload="initSakanaWidget()"
+          src="https://cdn.jsdelivr.net/npm/sakana-widget@2.7.0/lib/sakana.min.js"
+  ></script>
 </footer>
 
         <div class="sidebar-top">
