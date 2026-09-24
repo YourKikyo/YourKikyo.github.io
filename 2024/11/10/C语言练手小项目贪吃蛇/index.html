@@ -7,7 +7,7 @@
   
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_ex15nbittbh';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://yourkikyo.github.io';window.REIMU_CONFIG.relative = '/';window.REIMU_CONFIG.dark_mode = {"button":true,"mode":"auto"};</script>
   <title>
-    归档 | 桔梗的个人博客
+    C语言练手小项目贪吃蛇 | 桔梗的个人博客
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
@@ -15,18 +15,19 @@
     
 <link rel="stylesheet" href="/css/loader.css">
 
-    <meta name="description" content="梦想是环游世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="桔梗的个人博客">
-<meta property="og:url" content="https://yourkikyo.github.io/archives/index.html">
+    <meta name="description" content="这是一个用C语言写的贪吃蛇小游戏，使用的IDE是Dev-c++。项目起始时间为 2024.11.8，结束时间为 2024.11.10，实际耗时10h左右。 大一上快结束了，如果你们的结课作业是这个，可以参考一下。 并非完全由个人独立制作，原视频：【C语言项目-贪吃蛇】期末大作业 | 实训小项目 【零基础可上手】 原视频代码有几处bug，我对其进行了完善。  bug 1 :    当食物刷新在蛇身上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言练手小项目贪吃蛇">
+<meta property="og:url" content="https://yourkikyo.github.io/2024/11/10/C%E8%AF%AD%E8%A8%80%E7%BB%83%E6%89%8B%E5%B0%8F%E9%A1%B9%E7%9B%AE%E8%B4%AA%E5%90%83%E8%9B%87/index.html">
 <meta property="og:site_name" content="桔梗的个人博客">
-<meta property="og:description" content="梦想是环游世界">
+<meta property="og:description" content="这是一个用C语言写的贪吃蛇小游戏，使用的IDE是Dev-c++。项目起始时间为 2024.11.8，结束时间为 2024.11.10，实际耗时10h左右。 大一上快结束了，如果你们的结课作业是这个，可以参考一下。 并非完全由个人独立制作，原视频：【C语言项目-贪吃蛇】期末大作业 | 实训小项目 【零基础可上手】 原视频代码有几处bug，我对其进行了完善。  bug 1 :    当食物刷新在蛇身上">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yourkikyo.github.io/images/banner.webp">
+<meta property="article:published_time" content="2024-11-10T05:19:13.000Z">
+<meta property="article:modified_time" content="2026-09-24T14:28:49.765Z">
 <meta property="article:author" content="YourKikyo">
-<meta property="article:tag" content="YourKikyo,桔梗,博客">
+<meta property="article:tag" content="C语言">
+<meta property="article:tag" content="小游戏">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yourkikyo.github.io/images/banner.webp">
       <meta name="keywords" content="YourKikyo,桔梗,博客">
     <link rel="alternate" href="/atom.xml" title="桔梗的个人博客" type="application/atom+xml">
     <link rel="shortcut icon" href="/images/favicon.png">
@@ -124,13 +125,12 @@
   </nav>
 </div>
 <header id="header" aria-label="Site header">
-      <picture>
-      </picture>
-        <img  fetchpriority="high" src="/images/banner.webp" alt="">
+    <picture></picture>
+    <img  fetchpriority="high" src="http://kikyopicbed.site/i/2024/11/28/67480c194fe53.png" alt="C语言练手小项目贪吃蛇">
   <div id="header-outer">
     <div id="header-title">
           <span id="logo">
-            <h1 data-aos="slide-up">归档</h1>
+            <h1 data-aos="slide-up">C语言练手小项目贪吃蛇</h1>
           </span>
         <h2 id="subtitle-wrap" data-aos="slide-down">
         </h2>
@@ -140,10 +140,15 @@
 
         <div id="content" aria-label="Page content" class="sidebar-left"  >
           <aside id="sidebar" aria-label="Sidebar">
-  <div class="sidebar-wrapper-container ">
+  <div class="sidebar-wrapper-container sticky">
   <div class="sidebar-wrapper">
     <div class="sidebar-wrap" data-aos="fade-up">
-        <div class="sidebar-author">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%86%99%E7%9A%84%E8%B4%AA%E5%90%83%E8%9B%87%E5%B0%8F%E6%B8%B8%E6%88%8F%EF%BC%8C%E4%BD%BF%E7%94%A8%E7%9A%84IDE%E6%98%AFDev-c-%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">这是一个用C语言写的贪吃蛇小游戏，使用的IDE是Dev-c++。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-END"><span class="toc-number">2.</span> <span class="toc-text">The END.</span></a></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="YourKikyo" class="lazyload">
   <div class="sidebar-author-name">YourKikyo</div>
   <div class="sidebar-description">梦想是环游世界</div>
@@ -194,7 +199,11 @@
         <div class="sidebar-menu-link">友链</div>
       </div>
 </div>
-
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
     </div>
   </div>
   <div class="sidebar-widget">
@@ -202,109 +211,90 @@
   </div>
 </aside>
 
-          <section id="main" aria-label="Main content"><div class="archives-outer-wrap" data-aos="fade-up">
-    <div class="tag-wrap">
-    <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/">自我介绍</a>
-    </div>
-    <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/">C语言</a>
-    </div>
-    <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/">小游戏</a>
-    </div>
-    <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/Galgames/">Galgames</a>
-    </div>
-    <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/">测试</a>
-    </div>
-    <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/%E8%AE%A4%E7%9F%A5%E5%AE%9E%E4%B9%A0/">认知实习</a>
-    </div>
-    <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">科学上网</a>
-    </div>
+          <section id="main" aria-label="Main content"><article id="post-C语言练手小项目贪吃蛇" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2024-11-10T05:19:13.000Z" itemprop="datePublished">2024-11-10</time>
+    <time style="display: none;" id="post-update-time">2026-09-24</time>
+  </span>
 </div>
-<div class="category-wrap">
-</div>
-        <section class="archives-wrap" data-aos="fade-up">
-          <div class="archive-year-wrap">
-            <a href="/archives/2026" class="archive-year">2026</a>
-          </div>
-          <ul>
-            <li class="archive-article">
-  <div class="archive-article-date">
-    <span>
-      <time class="dt-published" datetime="2026-09-24T14:33:49.033Z" itemprop="datePublished">09-24</time>
-    </span>
-  </div>
-    <a class="archive-article-title" href="/2026/09/24/hello-world/">Hello World</a>
-</li>
 
-          </section>
-        <section class="archives-wrap" data-aos="fade-up">
-          <div class="archive-year-wrap">
-            <a href="/archives/2024" class="archive-year">2024</a>
-          </div>
-          <ul>
-            <li class="archive-article">
-  <div class="archive-article-date">
-    <span>
-      <time class="dt-published" datetime="2024-11-10T05:19:13.000Z" itemprop="datePublished">11-10</time>
-    </span>
-  </div>
-    <a class="archive-article-title" href="/2024/11/10/C%E8%AF%AD%E8%A8%80%E7%BB%83%E6%89%8B%E5%B0%8F%E9%A1%B9%E7%9B%AE%E8%B4%AA%E5%90%83%E8%9B%87/">C语言练手小项目贪吃蛇</a>
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <h2 id="这是一个用C语言写的贪吃蛇小游戏，使用的IDE是Dev-c-。"><a href="#这是一个用C语言写的贪吃蛇小游戏，使用的IDE是Dev-c-。" class="headerlink" title="这是一个用C语言写的贪吃蛇小游戏，使用的IDE是Dev-c++。"></a>这是一个用C语言写的贪吃蛇小游戏，使用的IDE是Dev-c++。</h2><p>项目起始时间为 <strong>2024.11.8</strong>，结束时间为 <strong>2024.11.10</strong>，实际耗时10h左右。</p>
+<p>大一上快结束了，如果你们的结课作业是这个，可以参考一下。</p>
+<p><em>并非完全由个人独立制作，原视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12k4y1W7rp/?share_source=copy_web&vd_source=6609934db88434b0e35e722c658a5f29">【C语言项目-贪吃蛇】期末大作业 | 实训小项目 【零基础可上手】</a></em></p>
+<p><em>原视频代码有几处bug，我对其进行了完善。</em></p>
+<ul>
+<li>bug 1 :</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>当食物刷新在蛇身上：</p>
+<p><code>creatFood()</code>函数进行递归时，未return结束上一个，导致指针索引时出错程序崩溃。</p>
 </li>
-
-            <li class="archive-article">
-  <div class="archive-article-date">
-    <span>
-      <time class="dt-published" datetime="2024-11-01T07:30:33.000Z" itemprop="datePublished">11-01</time>
-    </span>
-  </div>
-    <a class="archive-article-title" href="/2024/11/01/%E6%AD%A6%E6%B1%89%E8%AE%A4%E7%9F%A5%E5%AE%9E%E4%B9%A0/">武汉认知实习</a>
+<li><p>解决方案1：</p>
+<p>放弃递归，改为循环(代码位于main.c注释部分中)</p>
 </li>
-
-            <li class="archive-article">
-  <div class="archive-article-date">
-    <span>
-      <time class="dt-published" datetime="2024-09-17T10:14:12.000Z" itemprop="datePublished">09-17</time>
-    </span>
-  </div>
-    <a class="archive-article-title" href="/2024/09/17/MarkDown%E8%AF%AD%E6%B3%95%E6%B5%8B%E8%AF%95/">MarkDown语法测试</a>
+<li><p>解决方案2：</p>
+<p>递归后加上<code>return</code>来结束上次递归，例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">creatFood();</span><br><span class="line">return;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</blockquote>
+<ul>
+<li>bug 2 :</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>当蛇上一次游戏结束时移动方向朝向初始移动方向的反向时开始游戏，会直接触发<code>biteSelf()</code>函数导致死亡</p>
 </li>
-
-            <li class="archive-article">
-  <div class="archive-article-date">
-    <span>
-      <time class="dt-published" datetime="2024-09-15T12:33:01.000Z" itemprop="datePublished">09-15</time>
-    </span>
-  </div>
-    <a class="archive-article-title" href="/2024/09/15/%E6%88%91%E7%9A%84%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/">我的自我介绍</a>
+<li><p>解决方案：</p>
+<p>在<code>initSnake()</code>函数中初始化蛇的移动方向为 R (向右)</p>
 </li>
+</ul>
+</blockquote>
+<ul>
+<li>改进 1 :</li>
+</ul>
+<blockquote>
+<ul>
+<li>游戏所有菜单界面均改为<code>_getch()</code>函数，便于操作</li>
+</ul>
+</blockquote>
+<h1 id="The-END"><a href="#The-END" class="headerlink" title="The END."></a>The END.</h1>
+    </div>
+    <footer class="article-footer">
+      
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag" title="C语言">C语言</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/" rel="tag" title="小游戏">小游戏</a></li></ul>
 
-            <li class="archive-article">
-  <div class="archive-article-date">
-    <span>
-      <time class="dt-published" datetime="2024-07-30T02:16:47.000Z" itemprop="datePublished">07-30</time>
-    </span>
+    </footer>
   </div>
-    <a class="archive-article-title" href="/2024/07/30/%E9%9C%B2%E5%A8%9C%E8%AF%BA%E5%A8%83%E9%AD%94%E6%B3%95%E5%AD%A6%E6%A0%A1/">露娜诺娃魔法学校</a>
-</li>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+            <img data-src="/images/banner.webp" data-sizes="auto" alt="Hello World" class="lazyload">
+        <a href="/2026/09/24/hello-world/" aria-label="前一篇: Hello World" title="前一篇: Hello World"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            Hello World
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="http://kikyopicbed.site/i/2024/11/01/6724a088e2931.jpg" data-sizes="auto" alt="武汉认知实习" class="lazyload">
+      <a href="/2024/11/01/%E6%AD%A6%E6%B1%89%E8%AE%A4%E7%9F%A5%E5%AE%9E%E4%B9%A0/" aria-label="后一篇: 武汉认知实习"  title="后一篇: 武汉认知实习"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          武汉认知实习
+      </h3>
+    </div>
+  </nav>
 
-            <li class="archive-article">
-  <div class="archive-article-date">
-    <span>
-      <time class="dt-published" datetime="2024-07-30T01:18:41.000Z" itemprop="datePublished">07-30</time>
-    </span>
-  </div>
-    <a class="archive-article-title" href="/2024/07/30/Ciallo~%E2%AD%90/">Ciallo~⭐</a>
-</li>
+</article>
 
-          </ul>
-        </section>
-  </div>
 
 </section>
         </div>
@@ -348,7 +338,12 @@
       </div>
       <nav id="mobile-nav" aria-label="Mobile navigation">
   <div class="sidebar-wrap">
-      <div class="sidebar-author">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%86%99%E7%9A%84%E8%B4%AA%E5%90%83%E8%9B%87%E5%B0%8F%E6%B8%B8%E6%88%8F%EF%BC%8C%E4%BD%BF%E7%94%A8%E7%9A%84IDE%E6%98%AFDev-c-%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">这是一个用C语言写的贪吃蛇小游戏，使用的IDE是Dev-c++。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-END"><span class="toc-number">2.</span> <span class="toc-text">The END.</span></a></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="YourKikyo" class="lazyload">
   <div class="sidebar-author-name">YourKikyo</div>
   <div class="sidebar-description">梦想是环游世界</div>
@@ -399,8 +394,12 @@
         <div class="sidebar-menu-link">友链</div>
       </div>
 </div>
-
+</div>
   </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
 </nav>
 
     </div>
@@ -458,6 +457,49 @@
 
 <div id="lazy-script">
   <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "YourKikyo",
+          title: "C语言练手小项目贪吃蛇",
+          url: "https://yourkikyo.github.io/2024/11/10/C%E8%AF%AD%E8%A8%80%E7%BB%83%E6%89%8B%E5%B0%8F%E9%A1%B9%E7%9B%AE%E8%B4%AA%E5%90%83%E8%9B%87/",
+          excerpt: "",
+          description: "",
+          stripContent: "这是一个用C语言写的贪吃蛇小游戏，使用的IDE是Dev-c++。项目起始时间为 2024.11.8，结束时间为 2024.11.10，实际耗时10h左右。 大一上快结束了，如果你们的结课作业是这个，可以参考一下。 并非完全由个人独立制作，原视频：【C语言项目-贪吃蛇】期末大作业 | 实训小项目 【零基础可上手】 原视频代码有几处bug，我对其进行了完善。  bug 1 :    当食物刷新在蛇身上： creatFood()函数进行递归时，未return结束上一个，导致指针索引时出错程序崩溃。  ",
+          date: "Sun Nov 10 2024 14:19:13 GMT+0900",
+          updated: "Thu Sep 24 2026 23:28:49 GMT+0900",
+          cover: "http://kikyopicbed.site/i/2024/11/28/67480c194fe53.png",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      
+<script src="/js/tabs.js" data-pjax defer></script>
+
+      <script type="module" data-pjax>
+        (async () => {
+          const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+          const initPswp = (gallery, children) => {
+            if (_$$(`${gallery} ${children}`).length > 0) {
+              new PhotoSwipeLightbox({
+                gallery,
+                children,
+                pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+              }).init();
+            }
+          }
+          const pswp = () => {
+            initPswp('.article-entry', 'a.article-gallery-item');
+            initPswp('.article-gallery', 'a.article-gallery-item');
+          }
+          pswp();
+        })();
+      </script>
+        
+
+
   </div>
 </div>
 
