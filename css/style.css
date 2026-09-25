@@ -3163,18 +3163,9 @@ pre .emphasis {
   flex-direction: column;
 }
 .sidebar-wrapper-container.sticky {
-  max-height: calc(100vh - 20px * 2);
+  max-height: calc(100vh - 40px);
   position: sticky;
   top: 20px;
-  transition: top 0.3s;
-}
-.sidebar-wrapper-container.sticky .sidebar-wrap {
-  overflow-y: auto;
-  justify-content: safe center;
-}
-#wrap:has(#header-nav:not(.header-nav-hidden)) .sidebar-wrapper-container.sticky {
-  top: calc(56px + 20px);
-  max-height: calc(100vh - 56px - 20px * 2);
 }
 .sidebar-wrapper {
   transition: 0.3s;
