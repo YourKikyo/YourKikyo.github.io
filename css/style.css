@@ -43,9 +43,9 @@
   --highlight-deletion-bg: #ffeef0;
   --highlight-addition: #22863a;
   --highlight-addition-bg: #f0fff4;
-  --cursor-default: url("../images/cursor/yoimiya-cursor-default-48.png") 4 45, auto;
-  --cursor-pointer: url("../images/cursor/yoimiya-cursor-pointer-48.png") 5 37, pointer;
-  --cursor-text: url("../images/cursor/yoimiya-cursor-text-48.png") 12 28, text;
+  --cursor-default: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY2BgYGAAAAAFAAGKM+MAAAAAAElFTkSuQmCC"), auto;
+  --cursor-pointer: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY2BgYGAAAAAFAAGKM+MAAAAAAElFTkSuQmCC"), pointer;
+  --cursor-text: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY2BgYGAAAAAFAAGKM+MAAAAAAElFTkSuQmCC"), text;
   --footer-icon: url("../images/taichi.png");
   --sponsor-icon: url("../images/taichi.png");
   --top-icon: url("../images/taichi.png");
@@ -3166,6 +3166,10 @@ pre .emphasis {
   max-height: calc(100vh - 40px);
   position: sticky;
   top: 20px;
+}
+.sidebar-wrapper-container.sticky .sidebar-wrap {
+  overflow-y: auto;
+  justify-content: safe center;
 }
 .sidebar-wrapper {
   transition: 0.3s;
