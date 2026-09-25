@@ -43,9 +43,9 @@
   --highlight-deletion-bg: #ffeef0;
   --highlight-addition: #22863a;
   --highlight-addition-bg: #f0fff4;
-  --cursor-default: url("../images/cursor/reimu-cursor-default.png"), auto;
-  --cursor-pointer: url("../images/cursor/reimu-cursor-pointer.png"), pointer;
-  --cursor-text: url("../images/cursor/reimu-cursor-text.png"), text;
+  --cursor-default: url("../images/cursor/yoimiya-cursor-default-48.png") 4 45, auto;
+  --cursor-pointer: url("../images/cursor/yoimiya-cursor-pointer-48.png") 5 37, pointer;
+  --cursor-text: url("../images/cursor/yoimiya-cursor-text-48.png") 12 28, text;
   --footer-icon: url("../images/taichi.png");
   --sponsor-icon: url("../images/taichi.png");
   --top-icon: url("../images/taichi.png");
