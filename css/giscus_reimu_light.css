@@ -96,8 +96,8 @@ main {
   --color-social-reaction-bg-hover: var(--color-scale-gray-1);
   --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
   --cursor-default: url("../images/cursor-yoimiya/default.png") 0 0, auto;
-  --cursor-pointer: url("../images/cursor-yoimiya/pointer.png") 32 5, pointer;
-  --cursor-text: url("../images/cursor-yoimiya/text.png") 6 24, text;
+  --cursor-pointer: url("../images/cursor-yoimiya/pointer.png") 16 3, pointer;
+  --cursor-text: url("../images/cursor-yoimiya/text.png") 3 12, text;
 }
 /* Extensions from @primer/css/alerts/flash.scss */
 main .pagination-loader-container {
