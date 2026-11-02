@@ -222,7 +222,7 @@
       <a class="post-link" href="/2024/09/15/%E6%88%91%E7%9A%84%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/" aria-label="我的自我介绍" title="我的自我介绍"></a>
       <div class="post-sticky">置顶</div>
     <div class="post-cover left">
-          <img data-src="/covers/女仆.png" data-sizes="auto" alt="我的自我介绍" class="lazyload">
+          <img data-src="/covers/海滩烟花.png" data-sizes="auto" alt="我的自我介绍" class="lazyload">
     </div>
     <div class="post-info">
       <div class="post-meta">
@@ -284,7 +284,7 @@ creatFood()函数进行递归时，未return结束上一个，导致指针索引
   <div class="post-wrap left" data-aos="fade-up">
       <a class="post-link" href="/2024/11/01/%E6%AD%A6%E6%B1%89%E8%AE%A4%E7%9F%A5%E5%AE%9E%E4%B9%A0/" aria-label="武汉认知实习" title="武汉认知实习"></a>
     <div class="post-cover left">
-          <img data-src="/covers/海滩烟花.png" data-sizes="auto" alt="武汉认知实习" class="lazyload">
+          <img data-src="/covers/花丛.png" data-sizes="auto" alt="武汉认知实习" class="lazyload">
     </div>
     <div class="post-info">
       <div class="post-meta">
@@ -327,7 +327,7 @@ creatFood()函数进行递归时，未return结束上一个，导致指针索引
   <div class="post-wrap right" data-aos="fade-up">
       <a class="post-link" href="/2024/09/17/MarkDown%E8%AF%AD%E6%B3%95%E6%B5%8B%E8%AF%95/" aria-label="MarkDown语法测试" title="MarkDown语法测试"></a>
     <div class="post-cover right">
-          <img data-src="/covers/花丛.png" data-sizes="auto" alt="MarkDown语法测试" class="lazyload">
+          <img data-src="/covers/捞金鱼.png" data-sizes="auto" alt="MarkDown语法测试" class="lazyload">
     </div>
     <div class="post-info">
       <div class="post-meta">
@@ -385,7 +385,7 @@ World
   <div class="post-wrap left" data-aos="fade-up">
       <a class="post-link" href="/2024/07/30/%E9%9C%B2%E5%A8%9C%E8%AF%BA%E5%A8%83%E9%AD%94%E6%B3%95%E5%AD%A6%E6%A0%A1/" aria-label="露娜诺娃魔法学校" title="露娜诺娃魔法学校"></a>
     <div class="post-cover left">
-          <img data-src="/covers/捞金鱼.png" data-sizes="auto" alt="露娜诺娃魔法学校" class="lazyload">
+          <img data-src="/covers/女仆.png" data-sizes="auto" alt="露娜诺娃魔法学校" class="lazyload">
     </div>
     <div class="post-info">
       <div class="post-meta">
@@ -422,7 +422,7 @@ CitrusCloud
   <div class="post-wrap right" data-aos="fade-up">
       <a class="post-link" href="/2024/07/30/Ciallo~%E2%AD%90/" aria-label="Ciallo~⭐" title="Ciallo~⭐"></a>
     <div class="post-cover right">
-          <img data-src="/covers/捞金鱼.png" data-sizes="auto" alt="Ciallo~⭐" class="lazyload">
+          <img data-src="/covers/海滩烟花.png" data-sizes="auto" alt="Ciallo~⭐" class="lazyload">
     </div>
     <div class="post-info">
       <div class="post-meta">
@@ -638,9 +638,6 @@ TouchGal
 
 <div id="lazy-script">
   <div>
-      
-<script src="https://npm.webcache.cn/typed.js@2.1.0/dist/typed.umd.js" integrity="sha384-cMrTlShXEGSdSFA359p+3aVUxK&#x2F;R+0TAfbRZMcTlAn8yqzxEDj05QsS65nTFMMj4" crossorigin="anonymous" defer onload="initSubtitleTyping()"></script>
-
       <script data-pjax>
         window.subtitleTypingConfig = {
           strings: ["🎆一起去看烟花吗？","🎉欢迎来到我的博客！","🧡活着就是为了宵宫宝宝！"],
@@ -650,35 +647,263 @@ TouchGal
           startDelay: 300,
           loop: true,
           shuffle: true,
-          showCursor: true || true,
+          showCursor: true,
           cursorChar: "|",
-          smartBackspace: false || false,
         };
 
-        function initSubtitleTyping() {
-          const subtitleElement = document.querySelector('#subtitle');
-          if (!subtitleElement || !window.Typed || !window.subtitleTypingConfig) {
-            return;
+        /**
+         * 首页副标题打字机（替代 Typed.js）。
+         *
+         * 为什么换掉 Typed.js：Typed.js 内部用 substring() 按 UTF-16 码元切片，
+         * 而 emoji（如 🧡）占两个码元，于是会先画出半个代理对（浏览器显示成 �），
+         * 下一帧才补成完整符号——也就是“先乱码再正常”。
+         *
+         * 这里改为按 grapheme cluster（字形簇）切分，emoji、国旗、肤色修饰符、
+         * ZWJ 连字（👨‍👩‍👧‍👦）都作为整体一次性出现，不会再露出半个字符。
+         * 配置项沿用 window.subtitleTypingConfig，字符串按纯文本渲染。
+         * （smartBackspace 未实现，始终完整删除。）
+         */
+        (function () {
+          'use strict';
+
+          const segmenter = (function () {
+            try {
+              if (typeof Intl !== 'undefined' && typeof Intl.Segmenter === 'function') {
+                return new Intl.Segmenter(undefined, { granularity: 'grapheme' });
+              }
+            } catch (err) {
+              // 老浏览器不支持 Intl.Segmenter，走下面的兜底
+            }
+            return null;
+          })();
+
+          // 需要黏在前一个码点上的控制符：ZWJ、变体选择符、键帽、肤色修饰符、组合音标
+          const JOIN_CONTROL = /[\u200d\ufe0e\ufe0f\u20e3\u{1f3fb}-\u{1f3ff}]|\p{M}/u;
+
+          function fallbackSplitGraphemes(text) {
+            // Array.from 按码点切分，代理对不会再被劈开；
+            // 再把组合符、变体选择符、肤色、ZWJ 连字、国旗对黏回同一个字形簇。
+            const points = Array.from(text);
+            const regional = /\p{Regional_Indicator}/u;
+            const result = [];
+
+            for (let i = 0; i < points.length; i++) {
+              let cluster = points[i];
+
+              if (regional.test(cluster) && regional.test(points[i + 1] || '')) {
+                cluster += points[++i];
+                result.push(cluster);
+                continue;
+              }
+
+              while (i + 1 < points.length && JOIN_CONTROL.test(points[i + 1])) {
+                cluster += points[++i];
+                if (points[i] === '\u200d' && i + 1 < points.length) {
+                  cluster += points[++i];
+                }
+              }
+
+              result.push(cluster);
+            }
+
+            return result;
           }
 
-          if (window.__typedInstance) {
-            window.__typedInstance.destroy();
+          function splitGraphemes(text) {
+            const value = String(text);
+            if (segmenter) {
+              const result = [];
+              for (const part of segmenter.segment(value)) {
+                result.push(part.segment);
+              }
+              return result;
+            }
+            return fallbackSplitGraphemes(value);
           }
 
-          window.__typedInstance = new Typed('#subtitle span', window.subtitleTypingConfig);
-        }
-        
-        if (!window.__typedInitialized) {
-          window.__typedInitialized = true;
-          
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initSubtitleTyping);
+          class SubtitleTyper {
+            constructor(el, config) {
+              this.el = el;
+              this.config = config || {};
+              this.strings = (this.config.strings || [])
+                .map(function (item) { return String(item); })
+                .filter(function (item) { return item.trim() !== ''; });
+
+              this.typeSpeed = Math.max(0, Number(this.config.typeSpeed) || 0);
+              this.backSpeed = Math.max(0, Number(this.config.backSpeed) || 0);
+              this.backDelay = Math.max(0, Number(this.config.backDelay) || 0);
+              this.startDelay = Math.max(0, Number(this.config.startDelay) || 0);
+              this.loop = this.config.loop !== false;
+              this.shuffle = this.config.shuffle !== false;
+              this.showCursor = this.config.showCursor !== false;
+              this.cursorChar = this.config.cursorChar == null ? '|' : String(this.config.cursorChar);
+
+              this.order = [];
+              this.orderPos = 0;
+              this.clusters = [];
+              this.clusterPos = 0;
+              this.timer = null;
+              this.cursor = null;
+              this.destroyed = false;
+
+              this.el.textContent = '';
+              if (!this.strings.length) {
+                return;
+              }
+
+              this.insertCursor();
+              this.play();
+            }
+
+            insertCursor() {
+              if (!this.showCursor || !this.el.parentNode) {
+                return;
+              }
+              const cursor = document.createElement('span');
+              cursor.className = 'typed-cursor';
+              cursor.setAttribute('aria-hidden', 'true');
+              cursor.textContent = this.cursorChar;
+              this.el.parentNode.insertBefore(cursor, this.el.nextSibling);
+              this.cursor = cursor;
+            }
+
+            blink(on) {
+              if (this.cursor) {
+                this.cursor.classList.toggle('typed-cursor--blink', Boolean(on));
+              }
+            }
+
+            later(fn, delay) {
+              clearTimeout(this.timer);
+              this.timer = setTimeout(() => {
+                if (!this.destroyed) {
+                  fn();
+                }
+              }, delay);
+            }
+
+            humanize(speed) {
+              return speed + Math.round(Math.random() * speed / 2);
+            }
+
+            makeOrder() {
+              const order = this.strings.map(function (_, index) { return index; });
+              if (this.shuffle) {
+                for (let i = order.length - 1; i > 0; i--) {
+                  const j = Math.floor(Math.random() * (i + 1));
+                  const tmp = order[i];
+                  order[i] = order[j];
+                  order[j] = tmp;
+                }
+              }
+              return order;
+            }
+
+            play() {
+              this.order = this.makeOrder();
+              this.orderPos = 0;
+              this.blink(true);
+              this.later(() => this.startString(), this.startDelay);
+            }
+
+            startString() {
+              this.clusters = splitGraphemes(this.strings[this.order[this.orderPos]]);
+              this.clusterPos = 0;
+              this.render();
+              this.blink(false);
+              this.later(() => this.typeNext(), this.humanize(this.typeSpeed));
+            }
+
+            typeNext() {
+              this.clusterPos++;
+              this.render();
+
+              if (this.clusterPos >= this.clusters.length) {
+                this.finishString();
+              } else {
+                this.later(() => this.typeNext(), this.humanize(this.typeSpeed));
+              }
+            }
+
+            finishString() {
+              // 光标恢复闪烁；不循环时最后一句停在原地，其余情况等 backDelay 再删
+              this.blink(true);
+              const isLast = this.orderPos >= this.order.length - 1;
+              if (isLast && !this.loop) {
+                return;
+              }
+              this.later(() => this.deleteNext(), this.backDelay);
+            }
+
+            deleteNext() {
+              if (this.clusterPos <= 0) {
+                this.nextString();
+                return;
+              }
+
+              this.clusterPos--;
+              this.render();
+              this.blink(false);
+              this.later(() => this.deleteNext(), this.humanize(this.backSpeed));
+            }
+
+            nextString() {
+              const isLast = this.orderPos >= this.order.length - 1;
+              if (isLast) {
+                if (!this.loop) {
+                  this.blink(true);
+                  return;
+                }
+                this.order = this.makeOrder();
+                this.orderPos = 0;
+              } else {
+                this.orderPos++;
+              }
+              this.startString();
+            }
+
+            render() {
+              this.el.textContent = this.clusters.slice(0, this.clusterPos).join('');
+            }
+
+            destroy() {
+              this.destroyed = true;
+              clearTimeout(this.timer);
+              this.timer = null;
+              if (this.cursor && this.cursor.parentNode) {
+                this.cursor.parentNode.removeChild(this.cursor);
+              }
+              this.cursor = null;
+              this.el.textContent = '';
+            }
+          }
+
+          function initSubtitleTyping() {
+            if (window.__subtitleTyper) {
+              window.__subtitleTyper.destroy();
+              window.__subtitleTyper = null;
+            }
+
+            const target = document.querySelector('#subtitle span');
+            if (!target || !window.subtitleTypingConfig) {
+              return;
+            }
+
+            window.__subtitleTyper = new SubtitleTyper(target, window.subtitleTypingConfig);
+          }
+
+          // Pjax 切换页面后脚本会重新执行：首次绑定后，之后每次直接重建实例
+          if (!window.__subtitleTypingBound) {
+            window.__subtitleTypingBound = true;
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', initSubtitleTyping);
+            } else {
+              initSubtitleTyping();
+            }
           } else {
             initSubtitleTyping();
           }
-        } else {
-          initSubtitleTyping();
-        }
+        })();
       </script>
   </div>
 </div>

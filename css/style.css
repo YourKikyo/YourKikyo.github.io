@@ -803,6 +803,14 @@ button {
     font-size: 13px;
   }
 }
+#subtitle .typed-cursor {
+  margin-left: 1px;
+  font-weight: 300;
+  opacity: 1;
+}
+#subtitle .typed-cursor--blink {
+  animation: subtitle-cursor-blink 0.8s step-end infinite;
+}
 #subtitle-wrap {
   margin-top: 18px;
 }
@@ -960,6 +968,14 @@ button {
 .select-items li.selected {
   background: var(--red-1);
   color: #fff;
+}
+@keyframes subtitle-cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 .hr-line {
   margin: 12px 36px;
