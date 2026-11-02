@@ -96,7 +96,7 @@ main {
   --color-social-reaction-bg-hover: var(--color-scale-gray-7);
   --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
   --cursor-default: url("../images/cursor-yoimiya/default.png") 0 0, auto;
-  --cursor-pointer: url("../images/cursor-yoimiya/pointer.png") 16 3, pointer;
+  --cursor-pointer: url("../images/cursor-yoimiya/pointer.png") 0 0, pointer;
   --cursor-text: url("../images/cursor-yoimiya/text.png") 3 12, text;
 }
 /* Extensions from @primer/css/alerts/flash.scss */

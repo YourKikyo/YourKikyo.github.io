@@ -44,7 +44,7 @@
   --highlight-addition: #22863a;
   --highlight-addition-bg: #f0fff4;
   --cursor-default: url("../images/cursor-yoimiya/default.png") 0 0, auto;
-  --cursor-pointer: url("../images/cursor-yoimiya/pointer.png") 16 3, pointer;
+  --cursor-pointer: url("../images/cursor-yoimiya/pointer.png") 0 0, pointer;
   --cursor-text: url("../images/cursor-yoimiya/text.png") 3 12, text;
   --footer-icon: url("../images/taichi.png");
   --sponsor-icon: url("../images/taichi.png");
