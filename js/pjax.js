@@ -209,6 +209,19 @@ window.addEventListener("pjax:complete", () => {
       },
     })
   );
+  // 同步整页模糊背景，跟随新页面的 banner
+  const backdrop = document.getElementById("page-backdrop");
+  if (backdrop) {
+    const banner = document.querySelector("#header img[src]");
+    const source =
+      banner && banner.style.visibility !== "hidden"
+        ? banner.getAttribute("src")
+        : backdrop.getAttribute("data-fallback");
+    if (source) {
+      backdrop.style.backgroundImage = `url("${source}")`;
+      backdrop.style.backgroundColor = "";
+    }
+  }
   // destroy waline
   if (window.walineInstance) {
     window.walineInstance.destroy();
